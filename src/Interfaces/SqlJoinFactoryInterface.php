@@ -3,7 +3,7 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\SqlJoinType;
 
-interface SqlJoinInterface
+interface SqlJoinFactoryInterface
 {
     /**
      * @param SqlTableInterface $joinedTable

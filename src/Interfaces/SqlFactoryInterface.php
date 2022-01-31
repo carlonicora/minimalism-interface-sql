@@ -4,6 +4,19 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 interface SqlFactoryInterface
 {
     /**
+     * @param string $tableClass
+     */
+    public function __construct(
+        string $tableClass,
+    );
+
+    /**
+     * @return SqlTableInterface
+     */
+    public function getTable(
+    ): SqlTableInterface;
+
+    /**
      * @param SqlTableInterface $table
      * @return void
      */
@@ -46,11 +59,11 @@ interface SqlFactoryInterface
     ): void;
 
     /**
-     * @param SqlJoinInterface $join
+     * @param SqlJoinFactoryInterface $join
      * @return void
      */
     public function addJoin(
-        SqlJoinInterface $join
+        SqlJoinFactoryInterface $join
     ): void;
 
     /**

@@ -1,48 +1,48 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
-use CarloNicora\Minimalism\Interfaces\Cache\Interfaces\CacheInterface;
+use CarloNicora\Minimalism\Interfaces\Cache\Interfaces\CacheBuilderInterface;
 use CarloNicora\Minimalism\Interfaces\Data\Interfaces\DataObjectInterface;
 
 interface SqlExecutionInterface
 {
     /**
-     * @param DataObjectInterface|SqlFactoryInterface $factory
-     * @param CacheInterface|null $cache
-     * @return DataObjectInterface
+     * @param DataObjectInterface|DataObjectInterface[] $factory
+     * @param CacheBuilderInterface|null $cacheBuilder
+     * @return array
      */
     public function create(
-        DataObjectInterface|SqlFactoryInterface $factory,
-        ?CacheInterface $cache,
-    ): DataObjectInterface;
+        DataObjectInterface|array $factory,
+        ?CacheBuilderInterface $cacheBuilder,
+    ): array;
 
     /**
      * @param SqlFactoryInterface $factory
-     * @param CacheInterface|null $cache
+     * @param CacheBuilderInterface|null $cacheBuilder
      * @return array
      */
     public function read(
         SqlFactoryInterface $factory,
-        ?CacheInterface $cache,
+        ?CacheBuilderInterface $cacheBuilder,
     ): array;
 
     /**
-     * @param DataObjectInterface|SqlFactoryInterface $factory
-     * @param CacheInterface|null $cache
+     * @param DataObjectInterface|DataObjectInterface[] $factory
+     * @param CacheBuilderInterface|null $cacheBuilder
      * @return void
      */
     public function update(
-        DataObjectInterface|SqlFactoryInterface $factory,
-        ?CacheInterface $cache,
+        DataObjectInterface|array $factory,
+        ?CacheBuilderInterface $cacheBuilder,
     ): void;
 
     /**
      * @param DataObjectInterface|SqlFactoryInterface $factory
-     * @param CacheInterface|null $cache
+     * @param CacheBuilderInterface|null $cacheBuilder
      * @return void
      */
     public function delete(
         DataObjectInterface|SqlFactoryInterface $factory,
-        ?CacheInterface $cache,
+        ?CacheBuilderInterface $cacheBuilder,
     ): void;
 }
