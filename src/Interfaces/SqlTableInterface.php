@@ -8,7 +8,7 @@ interface SqlTableInterface
      */
     public function getTableName(
     ): string;
-
+    
     /**
      * @return SqlFieldInterface|null
      */
