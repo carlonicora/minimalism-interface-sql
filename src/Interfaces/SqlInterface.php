@@ -13,7 +13,7 @@ interface SqlInterface
      */
     public function create(
         DataObjectInterface|array $factory,
-        ?CacheBuilderInterface $cacheBuilder,
+        ?CacheBuilderInterface $cacheBuilder=null,
     ): array;
 
     /**
@@ -23,7 +23,7 @@ interface SqlInterface
      */
     public function read(
         SqlFactoryInterface $factory,
-        ?CacheBuilderInterface $cacheBuilder,
+        ?CacheBuilderInterface $cacheBuilder=null,
     ): array;
 
     /**
@@ -33,7 +33,7 @@ interface SqlInterface
      */
     public function update(
         DataObjectInterface|array $factory,
-        ?CacheBuilderInterface $cacheBuilder,
+        ?CacheBuilderInterface $cacheBuilder=null,
     ): void;
 
     /**
@@ -43,6 +43,6 @@ interface SqlInterface
      */
     public function delete(
         DataObjectInterface|SqlFactoryInterface $factory,
-        ?CacheBuilderInterface $cacheBuilder,
+        ?CacheBuilderInterface $cacheBuilder=null,
     ): void;
 }
