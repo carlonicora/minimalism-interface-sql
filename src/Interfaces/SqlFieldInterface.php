@@ -14,4 +14,10 @@ interface SqlFieldInterface
      */
     public function getFieldType(
     ): string;
+
+    /**
+     * @return bool
+     */
+    public function isPrimaryKey(
+    ): bool;
 }

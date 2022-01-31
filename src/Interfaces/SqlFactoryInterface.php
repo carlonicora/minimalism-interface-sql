@@ -4,10 +4,10 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 interface SqlFactoryInterface
 {
     /**
-     * @param string $tableClass
+     * @param SqlTableInterface $table
      */
     public function __construct(
-        string $tableClass,
+        SqlTableInterface $table,
     );
 
     /**
