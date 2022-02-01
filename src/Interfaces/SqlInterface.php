@@ -3,9 +3,10 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
 use CarloNicora\Minimalism\Exceptions\MinimalismException;
 use CarloNicora\Minimalism\Interfaces\Cache\Interfaces\CacheBuilderInterface;
+use CarloNicora\Minimalism\Interfaces\ServiceInterface;
 use Exception;
 
-interface SqlInterface
+interface SqlInterface extends ServiceInterface
 {
     /**
      * @template InstanceOfType
