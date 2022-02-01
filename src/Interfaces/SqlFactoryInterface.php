@@ -4,51 +4,43 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 interface SqlFactoryInterface
 {
     /**
-     * @return SqlFactoryInterface
-     */
-    public static function create(
-    ): SqlFactoryInterface;
-
-    /**
      * @param SqlTableInterface $table
      * @return SqlFactoryInterface
      */
-    public function selectAll(
+    public static function create(
         SqlTableInterface $table,
     ): SqlFactoryInterface;
 
     /**
-     * @param SqlTableInterface $table
+     * @return SqlFactoryInterface
+     */
+    public function selectAll(
+    ): SqlFactoryInterface;
+
+    /**
      * @param SqlFieldInterface[] $fields
      * @return SqlFactoryInterface
      */
     public function selectFields(
-        SqlTableInterface $table,
         array $fields,
     ): SqlFactoryInterface;
 
     /**
-     * @param SqlTableInterface $table
      * @return SqlFactoryInterface
      */
     public function delete(
-        SqlTableInterface $table,
     ): SqlFactoryInterface;
 
     /**
-     * @param SqlTableInterface $table
      * @return SqlFactoryInterface
      */
     public function update(
-        SqlTableInterface $table,
     ): SqlFactoryInterface;
 
     /**
-     * @param SqlTableInterface $table
      * @return SqlFactoryInterface
      */
     public function insert(
-        SqlTableInterface $table,
     ): SqlFactoryInterface;
 
     /**

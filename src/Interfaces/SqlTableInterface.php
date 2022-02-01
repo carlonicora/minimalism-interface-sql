@@ -6,7 +6,7 @@ interface SqlTableInterface
     /**
      * @return string
      */
-    public function getTableName(
+    public function getName(
     ): string;
     
     /**

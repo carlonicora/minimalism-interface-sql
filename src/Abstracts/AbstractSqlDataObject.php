@@ -13,6 +13,9 @@ abstract class AbstractSqlDataObject implements SqlDataObjectInterface, SimpleOb
     /** @var array  */
     private array $originalValues = [];
 
+    /** @var SqlTableInterface  */
+    protected SqlTableInterface $table;
+
     /**
      * @param ObjectFactory|null $objectFactory
      * @param array|null $data
@@ -38,8 +41,11 @@ abstract class AbstractSqlDataObject implements SqlDataObjectInterface, SimpleOb
     /**
      * @return SqlTableInterface
      */
-    abstract public function getTable(
-    ): SqlTableInterface;
+    final public function getTable(
+    ): SqlTableInterface
+    {
+        return $this->table;
+    }
 
     /**
      * @param array $data
@@ -64,8 +70,11 @@ abstract class AbstractSqlDataObject implements SqlDataObjectInterface, SimpleOb
     }
 
     /**
-     * @return ResourceObject
+     * @return ResourceObject|null
      */
-    abstract public function generateResource(
-    ): ResourceObject;
+    public function generateResource(
+    ): ?ResourceObject
+    {
+        return null;
+    }
 }

@@ -1,12 +1,12 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
+use CarloNicora\JsonApi\Objects\ResourceObject;
 use CarloNicora\Minimalism\Factories\ObjectFactory;
 
 interface SqlDataObjectInterface
 {
     /**
-     * DataObjectInterface constructor.
      * @param ObjectFactory|null $objectFactory
      * @param array|null $data
      */
@@ -33,4 +33,10 @@ interface SqlDataObjectInterface
      */
     public function getTable(
     ): SqlTableInterface;
+
+    /**
+     * @return ResourceObject|null
+     */
+    public function generateResource(
+    ): ?ResourceObject;
 }
