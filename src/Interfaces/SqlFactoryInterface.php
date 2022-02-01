@@ -82,9 +82,11 @@ interface SqlFactoryInterface
     ): string;
 
     /**
+     * @param SqlTableInterface $table
      * @param string $sql
      */
     public function setSql(
+        SqlTableInterface $table,
         string $sql,
     ): void;
 
