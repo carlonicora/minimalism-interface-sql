@@ -4,76 +4,112 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 interface SqlFactoryInterface
 {
     /**
-     * @return SqlTableInterface
+     * @return SqlFactoryInterface
      */
-    public function getTable(
-    ): SqlTableInterface;
+    public static function create(
+    ): SqlFactoryInterface;
 
     /**
      * @param SqlTableInterface $table
-     * @return void
+     * @return SqlFactoryInterface
      */
     public function selectAll(
         SqlTableInterface $table,
-    ): void;
+    ): SqlFactoryInterface;
 
     /**
      * @param SqlTableInterface $table
      * @param SqlFieldInterface[] $fields
-     * @return void
+     * @return SqlFactoryInterface
      */
     public function selectFields(
         SqlTableInterface $table,
         array $fields,
-    ): void;
+    ): SqlFactoryInterface;
 
     /**
      * @param SqlTableInterface $table
-     * @return void
+     * @return SqlFactoryInterface
      */
     public function delete(
         SqlTableInterface $table,
-    ): void;
+    ): SqlFactoryInterface;
 
     /**
      * @param SqlTableInterface $table
-     * @return void
+     * @return SqlFactoryInterface
      */
     public function update(
         SqlTableInterface $table,
-    ): void;
+    ): SqlFactoryInterface;
 
     /**
      * @param SqlTableInterface $table
-     * @return void
+     * @return SqlFactoryInterface
      */
     public function insert(
         SqlTableInterface $table,
-    ): void;
+    ): SqlFactoryInterface;
 
     /**
      * @param SqlJoinFactoryInterface $join
-     * @return void
+     * @return SqlFactoryInterface
      */
     public function addJoin(
         SqlJoinFactoryInterface $join
-    ): void;
+    ): SqlFactoryInterface;
 
     /**
      * @param SqlFieldInterface[] $fields
-     * @return void
+     * @return SqlFactoryInterface
      */
     public function addGroupByFields(
         array $fields,
-    ): void;
+    ): SqlFactoryInterface;
 
     /**
      * @param array{SqlFieldInterface,bool} $fields
-     * @return void
+     * @return SqlFactoryInterface
      */
     public function addOrderByFields(
         array $fields,
-    ): void;
+    ): SqlFactoryInterface;
+
+    /**
+     * @param SqlTableInterface $table
+     * @param string $sql
+     * @return SqlFactoryInterface
+     */
+    public function setSql(
+        SqlTableInterface $table,
+        string $sql,
+    ): SqlFactoryInterface;
+
+    /**
+     * @param SqlFieldInterface $field
+     * @param mixed $value
+     * @return SqlFactoryInterface
+     */
+    public function addParameter(
+        SqlFieldInterface $field,
+        mixed $value,
+    ): SqlFactoryInterface;
+
+    /**
+     * @param SqlFieldInterface $field
+     * @param mixed $value
+     * @return SqlFactoryInterface
+     */
+    public function addHavingParameter(
+        SqlFieldInterface $field,
+        mixed $value,
+    ): SqlFactoryInterface;
+
+    /**
+     * @return SqlTableInterface
+     */
+    public function getTable(
+    ): SqlTableInterface;
 
     /**
      * @return string
@@ -82,37 +118,8 @@ interface SqlFactoryInterface
     ): string;
 
     /**
-     * @param SqlTableInterface $table
-     * @param string $sql
-     */
-    public function setSql(
-        SqlTableInterface $table,
-        string $sql,
-    ): void;
-
-    /**
      * @return array
      */
     public function getParameters(
     ): array;
-
-    /**
-     * @param SqlFieldInterface $field
-     * @param mixed $value
-     * @return void
-     */
-    public function addParameter(
-        SqlFieldInterface $field,
-        mixed $value,
-    ): void;
-
-    /**
-     * @param SqlFieldInterface $field
-     * @param mixed $value
-     * @return void
-     */
-    public function addHavingParameter(
-        SqlFieldInterface $field,
-        mixed $value,
-    ): void;
 }

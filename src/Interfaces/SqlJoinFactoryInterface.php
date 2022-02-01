@@ -15,7 +15,7 @@ interface SqlJoinFactoryInterface
         SqlTableInterface $joinedTable,
         SqlFieldInterface $primaryKey,
         SqlFieldInterface $foreignKey,
-        ?SqlJoinType $joinType,
+        ?SqlJoinType $joinType=null,
     );
 
     /**
