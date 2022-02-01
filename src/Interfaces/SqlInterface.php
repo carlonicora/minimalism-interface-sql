@@ -19,12 +19,16 @@ interface SqlInterface
     /**
      * @param SqlFactoryInterface $factory
      * @param CacheBuilderInterface|null $cacheBuilder
-     * @return array
+     * @param string|null $singleReturnedObjectInterfaceName
+     * @param string|null $arrayReturnedObjectInterfaceName
+     * @return DataObjectInterface|array
      */
     public function read(
         SqlFactoryInterface $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
-    ): array;
+        ?string $singleReturnedObjectInterfaceName=null,
+        ?string $arrayReturnedObjectInterfaceName=null,
+    ): DataObjectInterface|array;
 
     /**
      * @param DataObjectInterface|DataObjectInterface[] $factory
