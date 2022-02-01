@@ -9,14 +9,17 @@ use Exception;
 interface SqlInterface
 {
     /**
+     * @template InstanceOfType
      * @param DataObjectInterface|DataObjectInterface[] $factory
      * @param CacheBuilderInterface|null $cacheBuilder
-     * @return array
+     * @param class-string<InstanceOfType>|null $returnedObjectInterfaceName
+     * @return InstanceOfType|array
      */
     public function create(
         DataObjectInterface|array $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
-    ): array;
+        ?string $returnedObjectInterfaceName=null,
+    ): DataObjectInterface|array;
 
     /**
      * @template InstanceOfType
