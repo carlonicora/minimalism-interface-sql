@@ -4,6 +4,7 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Abstracts;
 use CarloNicora\Minimalism\Enums\HttpCode;
 use CarloNicora\Minimalism\Exceptions\MinimalismException;
 use CarloNicora\Minimalism\Factories\ObjectFactory;
+use CarloNicora\Minimalism\Interfaces\Cache\Interfaces\CacheInterface;
 use CarloNicora\Minimalism\Interfaces\SimpleObjectInterface;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlDataObjectInterface;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlInterface;
@@ -15,10 +16,12 @@ abstract class AbstractSqlIO implements SimpleObjectInterface
     /**
      * @param ObjectFactory $objectFactory
      * @param SqlInterface $data
+     * @param CacheInterface|null $cache
      */
     public function __construct(
         protected ObjectFactory $objectFactory,
         protected SqlInterface $data,
+        protected ?CacheInterface $cache,
     )
     {
     }
