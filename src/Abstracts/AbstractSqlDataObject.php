@@ -5,16 +5,12 @@ use CarloNicora\JsonApi\Objects\ResourceObject;
 use CarloNicora\Minimalism\Factories\ObjectFactory;
 use CarloNicora\Minimalism\Interfaces\SimpleObjectInterface;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlDataObjectInterface;
-use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlTableInterface;
 use CarloNicora\Minimalism\Services\Path;
 
 abstract class AbstractSqlDataObject implements SqlDataObjectInterface, SimpleObjectInterface
 {
     /** @var array  */
     private array $originalValues = [];
-
-    /** @var SqlTableInterface  */
-    protected SqlTableInterface $table;
 
     /**
      * @param ObjectFactory|null $objectFactory
@@ -39,13 +35,10 @@ abstract class AbstractSqlDataObject implements SqlDataObjectInterface, SimpleOb
     }
 
     /**
-     * @return SqlTableInterface
+     * @return string
      */
-    final public function getTable(
-    ): SqlTableInterface
-    {
-        return $this->table;
-    }
+    abstract public function getTableClass(
+    ): string;
 
     /**
      * @param array $data
