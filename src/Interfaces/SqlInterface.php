@@ -3,23 +3,22 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
 use CarloNicora\Minimalism\Exceptions\MinimalismException;
 use CarloNicora\Minimalism\Interfaces\Cache\Interfaces\CacheBuilderInterface;
-use CarloNicora\Minimalism\Interfaces\Data\Interfaces\DataObjectInterface;
 use Exception;
 
 interface SqlInterface
 {
     /**
      * @template InstanceOfType
-     * @param DataObjectInterface|DataObjectInterface[] $factory
+     * @param SqlDataObjectInterface|SqlDataObjectInterface[] $factory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @param class-string<InstanceOfType>|null $returnedObjectInterfaceName
      * @return InstanceOfType|array
      */
     public function create(
-        DataObjectInterface|array $factory,
+        SqlDataObjectInterface|array $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
         ?string $returnedObjectInterfaceName=null,
-    ): DataObjectInterface|array;
+    ): SqlDataObjectInterface|array;
 
     /**
      * @template InstanceOfType
@@ -35,25 +34,25 @@ interface SqlInterface
         ?CacheBuilderInterface $cacheBuilder=null,
         ?string $singleReturnedObjectInterfaceName=null,
         ?string $arrayReturnedObjectInterfaceName=null,
-    ): DataObjectInterface|array;
+    ): SqlDataObjectInterface|array;
 
     /**
-     * @param DataObjectInterface|DataObjectInterface[] $factory
+     * @param SqlDataObjectInterface|SqlDataObjectInterface[] $factory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @return void
      */
     public function update(
-        DataObjectInterface|array $factory,
+        SqlDataObjectInterface|array $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
     ): void;
 
     /**
-     * @param DataObjectInterface|SqlFactoryInterface $factory
+     * @param SqlDataObjectInterface|SqlFactoryInterface $factory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @return void
      */
     public function delete(
-        DataObjectInterface|SqlFactoryInterface $factory,
+        SqlDataObjectInterface|SqlFactoryInterface $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
     ): void;
 }
