@@ -1,8 +1,10 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
+use CarloNicora\Minimalism\Exceptions\MinimalismException;
 use CarloNicora\Minimalism\Interfaces\Cache\Interfaces\CacheBuilderInterface;
 use CarloNicora\Minimalism\Interfaces\Data\Interfaces\DataObjectInterface;
+use Exception;
 
 interface SqlInterface
 {
@@ -17,11 +19,13 @@ interface SqlInterface
     ): array;
 
     /**
+     * @template InstanceOfType
      * @param SqlFactoryInterface $factory
      * @param CacheBuilderInterface|null $cacheBuilder
-     * @param string|null $singleReturnedObjectInterfaceName
-     * @param string|null $arrayReturnedObjectInterfaceName
-     * @return DataObjectInterface|array
+     * @param class-string<InstanceOfType>|null $singleReturnedObjectInterfaceName
+     * @param class-string<InstanceOfType>|null $arrayReturnedObjectInterfaceName
+     * @return InstanceOfType|array
+     * @throws MinimalismException|Exception
      */
     public function read(
         SqlFactoryInterface $factory,
