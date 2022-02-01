@@ -14,12 +14,12 @@ abstract class AbstractSqlDataObject implements SqlDataObjectInterface, SimpleOb
     private array $originalValues = [];
 
     /**
-     * @param ObjectFactory $objectFactory
+     * @param ObjectFactory|null $objectFactory
      * @param array|null $data
      * @param Path|null $path
      */
     public function __construct(
-        protected ObjectFactory $objectFactory,
+        protected ?ObjectFactory $objectFactory=null,
         ?array $data = null,
         protected ?Path $path=null,
     )
