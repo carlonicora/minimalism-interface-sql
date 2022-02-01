@@ -4,11 +4,11 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 interface SqlFactoryInterface
 {
     /**
-     * @param SqlTableInterface $table
+     * @param string $tableClass
      * @return SqlFactoryInterface
      */
     public static function create(
-        SqlTableInterface $table,
+        string $tableClass,
     ): SqlFactoryInterface;
 
     /**
@@ -68,12 +68,10 @@ interface SqlFactoryInterface
     ): SqlFactoryInterface;
 
     /**
-     * @param SqlTableInterface $table
      * @param string $sql
      * @return SqlFactoryInterface
      */
     public function setSql(
-        SqlTableInterface $table,
         string $sql,
     ): SqlFactoryInterface;
 
@@ -98,10 +96,10 @@ interface SqlFactoryInterface
     ): SqlFactoryInterface;
 
     /**
-     * @return SqlTableInterface
+     * @return string
      */
-    public function getTable(
-    ): SqlTableInterface;
+    public function getTableClass(
+    ): string;
 
     /**
      * @return string

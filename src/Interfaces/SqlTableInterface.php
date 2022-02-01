@@ -6,24 +6,24 @@ interface SqlTableInterface
     /**
      * @return string
      */
-    public function getName(
+    public function getTableName(
     ): string;
-    
+
     /**
      * @return SqlFieldInterface|null
      */
-    public function getAutoIncrementField(
+    public static function getAutoIncrementField(
     ): ?SqlFieldInterface;
 
     /**
      * @return SqlFieldInterface[]
      */
-    public function getPrimaryKeyFields(
+    public static function getPrimaryKeyFields(
     ): array;
 
     /**
      * @return SqlFieldInterface[]
      */
-    public function getRegularFields(
+    public static function getRegularFields(
     ): array;
 }

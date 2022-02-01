@@ -29,10 +29,10 @@ interface SqlDataObjectInterface
     ): array;
 
     /**
-     * @return SqlTableInterface
+     * @return string
      */
-    public function getTable(
-    ): SqlTableInterface;
+    public function getTableClass(
+    ): string;
 
     /**
      * @return ResourceObject|null
