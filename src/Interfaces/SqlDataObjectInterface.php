@@ -35,6 +35,12 @@ interface SqlDataObjectInterface
     ): string;
 
     /**
+     * @return SqlTableInterface
+     */
+    public function getTable(
+    ): SqlTableInterface;
+
+    /**
      * @return ResourceObject|null
      */
     public function generateResource(

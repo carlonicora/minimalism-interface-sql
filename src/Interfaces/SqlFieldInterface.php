@@ -1,7 +1,7 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
-use BackedEnum;
+use UnitEnum;
 use IntBackedEnum;
 
 interface SqlFieldInterface
@@ -22,17 +22,17 @@ interface SqlFieldInterface
     );
 
     /**
-     * @return BackedEnum
+     * @return UnitEnum
      */
     public function getIdentifier(
-    ): BackedEnum;
+    ): UnitEnum;
 
     /**
-     * @param BackedEnum $identifier
+     * @param UnitEnum $identifier
      * @return void
      */
     public function setIdentifier(
-        BackedEnum $identifier,
+        UnitEnum $identifier,
     ): void;
 
     /**

@@ -106,6 +106,12 @@ interface SqlFactoryInterface
     /**
      * @return string
      */
+    public function getTableClass(
+    ): string;
+
+    /**
+     * @return string
+     */
     public function getSql(
     ): string;
 
