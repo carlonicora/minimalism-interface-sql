@@ -29,12 +29,6 @@ interface SqlDataObjectInterface
     ): array;
 
     /**
-     * @return string
-     */
-    public function getTableClass(
-    ): string;
-
-    /**
      * @return ResourceObject|null
      */
     public function generateResource(

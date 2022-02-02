@@ -1,6 +1,8 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
+use UnitEnum;
+
 interface SqlFactoryInterface
 {
     /**
@@ -18,7 +20,7 @@ interface SqlFactoryInterface
     ): SqlFactoryInterface;
 
     /**
-     * @param SqlFieldInterface[] $fields
+     * @param UnitEnum[] $fields
      * @return SqlFactoryInterface
      */
     public function selectFields(
@@ -52,7 +54,7 @@ interface SqlFactoryInterface
     ): SqlFactoryInterface;
 
     /**
-     * @param SqlFieldInterface[] $fields
+     * @param UnitEnum[] $fields
      * @return SqlFactoryInterface
      */
     public function addGroupByFields(
@@ -60,7 +62,7 @@ interface SqlFactoryInterface
     ): SqlFactoryInterface;
 
     /**
-     * @param array{SqlFieldInterface,bool} $fields
+     * @param array{UnitEnum,bool} $fields
      * @return SqlFactoryInterface
      */
     public function addOrderByFields(
@@ -76,30 +78,30 @@ interface SqlFactoryInterface
     ): SqlFactoryInterface;
 
     /**
-     * @param SqlFieldInterface $field
+     * @param UnitEnum $field
      * @param mixed $value
      * @return SqlFactoryInterface
      */
     public function addParameter(
-        SqlFieldInterface $field,
+        UnitEnum $field,
         mixed $value,
     ): SqlFactoryInterface;
 
     /**
-     * @param SqlFieldInterface $field
+     * @param UnitEnum $field
      * @param mixed $value
      * @return SqlFactoryInterface
      */
     public function addHavingParameter(
-        SqlFieldInterface $field,
+        UnitEnum $field,
         mixed $value,
     ): SqlFactoryInterface;
 
     /**
-     * @return string
+     * @return SqlTableInterface
      */
-    public function getTableClass(
-    ): string;
+    public function getTable(
+    ): SqlTableInterface;
 
     /**
      * @return string

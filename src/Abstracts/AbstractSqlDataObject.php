@@ -35,12 +35,6 @@ abstract class AbstractSqlDataObject implements SqlDataObjectInterface, SimpleOb
     }
 
     /**
-     * @return string
-     */
-    abstract public function getTableClass(
-    ): string;
-
-    /**
      * @param array $data
      */
     abstract public function import(

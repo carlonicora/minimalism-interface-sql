@@ -2,17 +2,18 @@
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\SqlJoinType;
+use UnitEnum;
 
 interface SqlJoinFactoryInterface
 {
     /**
-     * @param SqlFieldInterface $primaryKey
-     * @param SqlFieldInterface $foreignKey
+     * @param UnitEnum $primaryKey
+     * @param UnitEnum $foreignKey
      * @param SqlJoinType|null $joinType
      */
     public function __construct(
-        SqlFieldInterface $primaryKey,
-        SqlFieldInterface $foreignKey,
+        UnitEnum $primaryKey,
+        UnitEnum $foreignKey,
         ?SqlJoinType $joinType=null,
     );
 
