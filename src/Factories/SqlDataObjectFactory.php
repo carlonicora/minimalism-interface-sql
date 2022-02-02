@@ -4,7 +4,9 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Factories;
 use CarloNicora\Minimalism\Interfaces\Sql\Attributes\DbField;
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\DbFieldType;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlDataObjectInterface;
+use Exception;
 use ReflectionObject;
+use Throwable;
 
 class SqlDataObjectFactory
 {
@@ -53,19 +55,23 @@ class SqlDataObjectFactory
         $response = [];
 
         foreach ((new ReflectionObject($object))->getProperties() as $property){
-            $attributes = $property->getAttributes(DbFieldType::class);
+            $attributes = $property->getAttributes(DbField::class);
             if (!empty($attributes)){
                 $propertyKey = $attributes[0]->getArguments()['field']->name ?? $property->getName();
                 /** @noinspection PhpExpressionResultUnusedInspection */
                 $property->setAccessible(true);
-                $value = $property->getValue($object);
+                try {
+                    $value = $property->getValue($object);
+                } catch (Exception|Throwable) {
+                    $value = null;
+                }
 
-                switch ($attributes[0]->getArguments()['fieldType'] ?? DbFieldType::Simple){
+                switch ($attributes[0]->getArguments()['fieldType'] ?? DbFieldType::Simple) {
                     case DbFieldType::Simple:
                         $response[$propertyKey] = $value;
                         break;
                     case DbFieldType::IntDateTime:
-                        if ($property->getType()?->allowsNull()){
+                        if ($property->getType()?->allowsNull()) {
                             $response[$propertyKey] = ($value === null ? null : date('Y-m-d H:i:s', $value));
                         } else {
                             $response[$propertyKey] = date('Y-m-d H:i:s', $value ?? time());
@@ -74,6 +80,7 @@ class SqlDataObjectFactory
                     case DbFieldType::Bool:
                         $response[$propertyKey] = $value ?? false;
                 }
+
             }
         }
 
