@@ -1,6 +1,7 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Factories;
 
+use CarloNicora\Minimalism\Factories\ObjectFactory;
 use CarloNicora\Minimalism\Interfaces\Sql\Attributes\DbField;
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\DbFieldType;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlDataObjectInterface;
@@ -12,16 +13,19 @@ class SqlDataObjectFactory
 {
     /**
      * @template InstanceOfType
+     * @param ObjectFactory $objectFactory
      * @param class-string<InstanceOfType> $objectClass
      * @param array $data
      * @return InstanceOfType
+     * @throws Exception
      */
     public static function createObject(
+        ObjectFactory $objectFactory,
         string $objectClass,
         array $data,
     ): SqlDataObjectInterface
     {
-        $response = new $objectClass();
+        $response = $objectFactory->create($objectClass);
 
         foreach ((new ReflectionObject($response))->getProperties() as $property){
             $attributes = $property->getAttributes(DbField::class);
