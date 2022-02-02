@@ -24,7 +24,7 @@ class SqlDataObjectFactory
         foreach ((new ReflectionObject($response))->getProperties() as $property){
             $attributes = $property->getAttributes(DbField::class);
             if (!empty($attributes)){
-                $propertyKey = $attributes[0]->getArguments()['name'] ?? $property->getName();
+                $propertyKey = $attributes[0]->getArguments()['field']->name ?? $property->getName();
                 /** @noinspection PhpExpressionResultUnusedInspection */
                 $property->setAccessible(true);
                 $property->setValue(
@@ -55,7 +55,7 @@ class SqlDataObjectFactory
         foreach ((new ReflectionObject($object))->getProperties() as $property){
             $attributes = $property->getAttributes(DbFieldType::class);
             if (!empty($attributes)){
-                $propertyKey = $attributes[0]->getArguments()['name'] ?? $property->getName();
+                $propertyKey = $attributes[0]->getArguments()['field']->name ?? $property->getName();
                 /** @noinspection PhpExpressionResultUnusedInspection */
                 $property->setAccessible(true);
                 $value = $property->getValue($object);
