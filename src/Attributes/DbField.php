@@ -10,11 +10,11 @@ class DbField
 {
     /**
      * @param UnitEnum|null $field
-     * @param DbFieldType|null $transformator
+     * @param DbFieldType|null $fieldType
      */
     public function __construct(
         ?UnitEnum $field=null,
-        ?DbFieldType $transformator=DbFieldType::Simple,
+        ?DbFieldType $fieldType=DbFieldType::Simple,
     )
     {
     }

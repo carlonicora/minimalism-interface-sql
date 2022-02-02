@@ -32,7 +32,7 @@ class SqlDataObjectFactory
                     value: self::getValue(
                         name: $propertyKey,
                         data: $data,
-                        fieldType: $attributes[0]->getArguments()['transformator'] ?? DbFieldType::Simple,
+                        fieldType: $attributes[0]->getArguments()['fieldType'] ?? DbFieldType::Simple,
                         isNullable: $property->getType()?->allowsNull(),
                     ),
                 );
@@ -60,7 +60,7 @@ class SqlDataObjectFactory
                 $property->setAccessible(true);
                 $value = $property->getValue($object);
 
-                switch ($attributes[0]->getArguments()['transformator'] ?? DbFieldType::Simple){
+                switch ($attributes[0]->getArguments()['fieldType'] ?? DbFieldType::Simple){
                     case DbFieldType::Simple:
                         $response[$propertyKey] = $value;
                         break;
