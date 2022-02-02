@@ -1,6 +1,7 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
+use BackedEnum;
 use IntBackedEnum;
 
 interface SqlFieldInterface
@@ -19,6 +20,20 @@ interface SqlFieldInterface
         string $tableName='',
         string $databaseName='',
     );
+
+    /**
+     * @return BackedEnum
+     */
+    public function getIdentifier(
+    ): BackedEnum;
+
+    /**
+     * @param BackedEnum $identifier
+     * @return void
+     */
+    public function setIdentifier(
+        BackedEnum $identifier,
+    ): void;
 
     /**
      * @return string

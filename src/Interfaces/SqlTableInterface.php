@@ -5,13 +5,11 @@ interface SqlTableInterface
 {
     /**
      * @param string $name
-     * @param string $databaseName
-     * @param string|null $tableClass
+     * @param string $databaseIdentifier
      */
     public function __construct(
         string $name,
-        string $databaseName,
-        ?string $tableClass=null,
+        string $databaseIdentifier,
     );
 
     /**
@@ -31,7 +29,7 @@ interface SqlTableInterface
      */
     public function getDatabaseName(
     ): string;
-    
+
     /**
      * @return SqlFieldInterface|null
      */
