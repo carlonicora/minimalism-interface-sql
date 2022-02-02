@@ -12,31 +12,31 @@ interface SqlInterface extends ServiceInterface
      * @template InstanceOfType
      * @param SqlDataObjectInterface|SqlDataObjectInterface[] $factory
      * @param CacheBuilderInterface|null $cacheBuilder
-     * @param class-string<InstanceOfType>|null $singleReturnedObjectInterfaceName
-     * @param class-string<InstanceOfType>|null $arrayReturnedObjectInterfaceName
+     * @param class-string<InstanceOfType>|null $sqlObjectInterfaceClass
+     * @param bool $expectsSingleRecord
      * @return InstanceOfType|array
      */
     public function create(
         SqlDataObjectInterface|array $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
-        ?string $singleReturnedObjectInterfaceName=null,
-        ?string $arrayReturnedObjectInterfaceName=null,
+        ?string $sqlObjectInterfaceClass=null,
+        bool $expectsSingleRecord=true,
     ): SqlDataObjectInterface|array;
 
     /**
      * @template InstanceOfType
      * @param SqlFactoryInterface $factory
      * @param CacheBuilderInterface|null $cacheBuilder
-     * @param class-string<InstanceOfType>|null $singleReturnedObjectInterfaceName
-     * @param class-string<InstanceOfType>|null $arrayReturnedObjectInterfaceName
+     * @param class-string<InstanceOfType>|null $sqlObjectInterfaceClass
+     * @param bool $expectsSingleRecord
      * @return InstanceOfType|array
      * @throws MinimalismException|Exception
      */
     public function read(
         SqlFactoryInterface $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
-        ?string $singleReturnedObjectInterfaceName=null,
-        ?string $arrayReturnedObjectInterfaceName=null,
+        ?string $sqlObjectInterfaceClass=null,
+        bool $expectsSingleRecord=true,
     ): SqlDataObjectInterface|array;
 
     /**
