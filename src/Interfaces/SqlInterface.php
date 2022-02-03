@@ -50,12 +50,12 @@ interface SqlInterface extends ServiceInterface
     ): void;
 
     /**
-     * @param SqlDataObjectInterface|SqlFactoryInterface $factory
+     * @param SqlDataObjectInterface|SqlFactoryInterface|SqlDataObjectInterface[]|SqlFactoryInterface[] $factory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @return void
      */
     public function delete(
-        SqlDataObjectInterface|SqlFactoryInterface $factory,
+        SqlDataObjectInterface|SqlFactoryInterface|array $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
     ): void;
 }
