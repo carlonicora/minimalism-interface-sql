@@ -36,6 +36,7 @@ class SqlDataObjectFactory
                 $property->setValue(
                     objectOrValue: $response,
                     value: self::getValue(
+                        object: $response,
                         name: $propertyKey,
                         data: $data,
                         fieldType: $attributes[0]->getArguments()['fieldType'] ?? DbFieldType::Simple,
@@ -51,6 +52,7 @@ class SqlDataObjectFactory
     /**
      * @param SqlDataObjectInterface $object
      * @return array
+     * @throws Exception
      */
     public static function createData(
         SqlDataObjectInterface $object,
@@ -83,6 +85,13 @@ class SqlDataObjectFactory
                         break;
                     case DbFieldType::Bool:
                         $response[$propertyKey] = $value ?? false;
+                        break;
+                    case DbFieldType::Array:
+                        $response[$propertyKey] = json_encode($value, JSON_THROW_ON_ERROR);
+                        break;
+                    case DbFieldType::Custom:
+                        $response[$propertyKey] = $object->translateCustomField($property->getName());
+                        break;
                 }
 
             }
@@ -92,6 +101,7 @@ class SqlDataObjectFactory
     }
 
     /**
+     * @param SqlDataObjectInterface $object
      * @param string $name
      * @param array $data
      * @param DbFieldType $fieldType
@@ -99,6 +109,7 @@ class SqlDataObjectFactory
      * @return mixed
      */
     private static function getValue(
+        SqlDataObjectInterface $object,
         string $name,
         array $data,
         DbFieldType $fieldType,
@@ -124,6 +135,16 @@ class SqlDataObjectFactory
                 break;
             case DbFieldType::Bool:
                 $response = $data[$name] ?? false;
+                break;
+            case DbFieldType::Array:
+                try {
+                    $response = json_decode($data[$name], true, 512, JSON_THROW_ON_ERROR);
+                } catch (Exception) {
+                    $response = [];
+                }
+                break;
+            case DbFieldType::Custom:
+                $response = $object->translateCustomField($name, $data[$name]);
                 break;
         }
 

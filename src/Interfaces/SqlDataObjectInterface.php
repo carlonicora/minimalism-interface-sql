@@ -16,4 +16,14 @@ interface SqlDataObjectInterface extends SimpleObjectInterface
      */
     public function getTable(
     ): SqlTableInterface;
+
+    /**
+     * @param string $fieldName
+     * @param mixed $value
+     * @return mixed
+     */
+    public function translateCustomField(
+        string $fieldName,
+        mixed $value=null,
+    ): mixed;
 }
