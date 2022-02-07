@@ -1,6 +1,7 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
+use CarloNicora\Minimalism\Interfaces\Sql\Enums\SqlComparison;
 use UnitEnum;
 
 interface SqlFactoryInterface
@@ -80,11 +81,13 @@ interface SqlFactoryInterface
     /**
      * @param UnitEnum $field
      * @param mixed $value
+     * @param SqlComparison|null $comparison
      * @return SqlFactoryInterface
      */
     public function addParameter(
         UnitEnum $field,
         mixed $value,
+        ?SqlComparison $comparison=SqlComparison::Equal,
     ): SqlFactoryInterface;
 
     /**

@@ -10,14 +10,14 @@ interface SqlInterface extends ServiceInterface
 {
     /**
      * @template InstanceOfType
-     * @param SqlDataObjectInterface|SqlDataObjectInterface[] $factory
+     * @param SqlFactoryInterface|SqlDataObjectInterface|SqlDataObjectInterface[] $factory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @param class-string<InstanceOfType>|null $sqlObjectInterfaceClass
      * @param bool $expectsSingleRecord
      * @return InstanceOfType|array
      */
     public function create(
-        SqlDataObjectInterface|array $factory,
+        SqlFactoryInterface|SqlDataObjectInterface|array $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
         ?string $sqlObjectInterfaceClass=null,
         bool $expectsSingleRecord=true,
