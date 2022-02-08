@@ -9,4 +9,9 @@ enum SqlComparison: string
     case LesserThan='<';
     case GreaterOrEqualThen='>=';
     case LesserOrEqualThen='<=';
+    case In='IN';
+    case NotIn='NOT IN';
+    case LikeLeft='%LIKE';
+    case LikeRight='LIKE%';
+    Case Like='LIKE';
 }
