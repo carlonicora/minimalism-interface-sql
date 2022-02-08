@@ -101,6 +101,16 @@ interface SqlFactoryInterface
     ): SqlFactoryInterface;
 
     /**
+     * @param int $start
+     * @param int $length
+     * @return SqlFactoryInterface
+     */
+    public function limit(
+        int $start,
+        int $length,
+    ): SqlFactoryInterface;
+
+    /**
      * @return SqlTableInterface
      */
     public function getTable(
