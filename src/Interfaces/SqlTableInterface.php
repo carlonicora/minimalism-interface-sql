@@ -1,6 +1,8 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
+use UnitEnum;
+
 interface SqlTableInterface
 {
     /**
@@ -60,5 +62,13 @@ interface SqlTableInterface
      */
     public function getFieldByName(
         string $fieldName,
+    ): SqlFieldInterface;
+
+    /**
+     * @param UnitEnum $field
+     * @return SqlFieldInterface
+     */
+    public function getField(
+        UnitEnum $field,
     ): SqlFieldInterface;
 }
