@@ -130,6 +130,12 @@ interface SqlFactoryInterface
     ): string;
 
     /**
+     * @return array
+     */
+    public function getInsertedArray(
+    ): array;
+
+    /**
      * @return string
      */
     public function getSql(
