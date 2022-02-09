@@ -13,14 +13,14 @@ interface SqlInterface extends ServiceInterface
      * @param SqlFactoryInterface|SqlDataObjectInterface|SqlDataObjectInterface[] $factory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @param class-string<InstanceOfType>|null $sqlObjectInterfaceClass
-     * @param bool $expectsSingleRecord
+     * @param bool $requireObjectsList
      * @return InstanceOfType|array
      */
     public function create(
         SqlFactoryInterface|SqlDataObjectInterface|array $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
         ?string $sqlObjectInterfaceClass=null,
-        bool $expectsSingleRecord=true,
+        bool $requireObjectsList=false,
     ): SqlDataObjectInterface|array;
 
     /**
@@ -28,15 +28,16 @@ interface SqlInterface extends ServiceInterface
      * @param SqlFactoryInterface $factory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @param class-string<InstanceOfType>|null $sqlObjectInterfaceClass
-     * @param bool $expectsSingleRecord
+     * @param bool $requireObjectsList
      * @return InstanceOfType|array
-     * @throws MinimalismException|Exception
+     * @throws MinimalismException
+     * @throws Exception
      */
     public function read(
         SqlFactoryInterface $factory,
         ?CacheBuilderInterface $cacheBuilder=null,
         ?string $sqlObjectInterfaceClass=null,
-        bool $expectsSingleRecord=true,
+        bool $requireObjectsList=false,
     ): SqlDataObjectInterface|array;
 
     /**
