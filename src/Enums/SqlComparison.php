@@ -7,8 +7,8 @@ enum SqlComparison: string
     case NotEqual='<>';
     case GreaterThan='>';
     case LesserThan='<';
-    case GreaterOrEqualThen='>=';
-    case LesserOrEqualThen='<=';
+    case GreaterOrEqualThan='>=';
+    case LesserOrEqualThan='<=';
     case In='IN';
     case NotIn='NOT IN';
     case LikeLeft='%LIKE';
