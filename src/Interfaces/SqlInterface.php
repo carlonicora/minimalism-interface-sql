@@ -41,12 +41,12 @@ interface SqlInterface extends ServiceInterface
     ): SqlDataObjectInterface|array;
 
     /**
-     * @param SqlDataObjectInterface|SqlDataObjectInterface[] $queryFactory
+     * @param SqlDataObjectInterface|SqlQueryFactoryInterface|SqlDataObjectInterface[] $queryFactory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @return void
      */
     public function update(
-        SqlDataObjectInterface|array $queryFactory,
+        SqlDataObjectInterface|SqlQueryFactoryInterface|array $queryFactory,
         ?CacheBuilderInterface $cacheBuilder=null,
     ): void;
 
