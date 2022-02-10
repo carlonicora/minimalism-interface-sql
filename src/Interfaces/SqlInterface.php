@@ -10,53 +10,53 @@ interface SqlInterface extends ServiceInterface
 {
     /**
      * @template InstanceOfType
-     * @param SqlFactoryInterface|SqlDataObjectInterface|SqlDataObjectInterface[] $factory
+     * @param SqlQueryFactoryInterface|SqlDataObjectInterface|SqlDataObjectInterface[] $queryFactory
      * @param CacheBuilderInterface|null $cacheBuilder
-     * @param class-string<InstanceOfType>|null $sqlObjectInterfaceClass
+     * @param class-string<InstanceOfType>|null $responseType
      * @param bool $requireObjectsList
      * @return InstanceOfType|array
      */
     public function create(
-        SqlFactoryInterface|SqlDataObjectInterface|array $factory,
-        ?CacheBuilderInterface $cacheBuilder=null,
-        ?string $sqlObjectInterfaceClass=null,
-        bool $requireObjectsList=false,
+        SqlQueryFactoryInterface|SqlDataObjectInterface|array $queryFactory,
+        ?CacheBuilderInterface                                $cacheBuilder=null,
+        ?string                                               $responseType=null,
+        bool                                                  $requireObjectsList=false,
     ): SqlDataObjectInterface|array;
 
     /**
      * @template InstanceOfType
-     * @param SqlFactoryInterface $factory
+     * @param SqlQueryFactoryInterface $queryFactory
      * @param CacheBuilderInterface|null $cacheBuilder
-     * @param class-string<InstanceOfType>|null $sqlObjectInterfaceClass
+     * @param class-string<InstanceOfType>|null $responseType
      * @param bool $requireObjectsList
      * @return InstanceOfType|array
      * @throws MinimalismException
      * @throws Exception
      */
     public function read(
-        SqlFactoryInterface $factory,
-        ?CacheBuilderInterface $cacheBuilder=null,
-        ?string $sqlObjectInterfaceClass=null,
-        bool $requireObjectsList=false,
+        SqlQueryFactoryInterface $queryFactory,
+        ?CacheBuilderInterface   $cacheBuilder=null,
+        ?string                  $responseType=null,
+        bool                     $requireObjectsList=false,
     ): SqlDataObjectInterface|array;
 
     /**
-     * @param SqlDataObjectInterface|SqlDataObjectInterface[] $factory
+     * @param SqlDataObjectInterface|SqlDataObjectInterface[] $queryFactory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @return void
      */
     public function update(
-        SqlDataObjectInterface|array $factory,
+        SqlDataObjectInterface|array $queryFactory,
         ?CacheBuilderInterface $cacheBuilder=null,
     ): void;
 
     /**
-     * @param SqlDataObjectInterface|SqlFactoryInterface|SqlDataObjectInterface[]|SqlFactoryInterface[] $factory
+     * @param SqlDataObjectInterface|SqlQueryFactoryInterface|SqlDataObjectInterface[]|SqlQueryFactoryInterface[] $queryFactory
      * @param CacheBuilderInterface|null $cacheBuilder
      * @return void
      */
     public function delete(
-        SqlDataObjectInterface|SqlFactoryInterface|array $factory,
-        ?CacheBuilderInterface $cacheBuilder=null,
+        SqlDataObjectInterface|SqlQueryFactoryInterface|array $queryFactory,
+        ?CacheBuilderInterface                                $cacheBuilder=null,
     ): void;
 }

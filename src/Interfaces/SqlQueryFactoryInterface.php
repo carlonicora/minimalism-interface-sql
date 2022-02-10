@@ -4,117 +4,117 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\SqlComparison;
 use UnitEnum;
 
-interface SqlFactoryInterface
+interface SqlQueryFactoryInterface
 {
     /**
      * @param string $tableClass
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public static function create(
         string $tableClass,
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function selectAll(
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
      * @param UnitEnum[] $fields
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function selectFields(
         array $fields,
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function delete(
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function update(
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function insert(
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
      * @param SqlJoinFactoryInterface $join
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function addJoin(
         SqlJoinFactoryInterface $join
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
      * @param UnitEnum[] $fields
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function addGroupByFields(
         array $fields,
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
      * @param SqlOrderByInterface[] $fields
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function addOrderByFields(
         array $fields,
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
      * @param string $sql
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function setSql(
         string $sql,
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
      * @param UnitEnum|string $field
      * @param mixed $value
      * @param SqlComparison|null $comparison
      * @param UnitEnum|null $stringParameterType
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function addParameter(
         UnitEnum|string $field,
         mixed $value,
         ?SqlComparison $comparison=SqlComparison::Equal,
         ?UnitEnum $stringParameterType=null,
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
      * @param UnitEnum|string $field
      * @param mixed $value
      * @param SqlComparison|null $comparison
      * @param UnitEnum|null $stringParameterType
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function addHavingParameter(
         UnitEnum|string $field,
         mixed $value,
         ?SqlComparison $comparison=SqlComparison::Equal,
         ?UnitEnum $stringParameterType=null,
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
      * @param int $start
      * @param int $length
-     * @return SqlFactoryInterface
+     * @return SqlQueryFactoryInterface
      */
     public function limit(
         int $start,
         int $length,
-    ): SqlFactoryInterface;
+    ): SqlQueryFactoryInterface;
 
     /**
      * @return SqlTableInterface
