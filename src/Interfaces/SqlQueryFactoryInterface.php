@@ -21,7 +21,7 @@ interface SqlQueryFactoryInterface
     ): SqlQueryFactoryInterface;
 
     /**
-     * @param UnitEnum[] $fields
+     * @param UnitEnum[]|string[] $fields
      * @return SqlQueryFactoryInterface
      */
     public function selectFields(
