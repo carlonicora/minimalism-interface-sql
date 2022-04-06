@@ -60,7 +60,7 @@ class AbstractSqlIO implements SimpleObjectInterface
     ): SqlDataObjectInterface
     {
         $result = $this->data->create(
-            factory: $dataObject
+            queryFactory: $dataObject
         );
 
         if ($cache !== null) {
@@ -81,7 +81,7 @@ class AbstractSqlIO implements SimpleObjectInterface
     ): void
     {
         $this->data->update(
-            factory: $dataObject,
+            queryFactory: $dataObject,
         );
 
         if ($cache !== null) {
@@ -100,7 +100,7 @@ class AbstractSqlIO implements SimpleObjectInterface
     ): void
     {
         $this->data->delete(
-            factory: $dataObject,
+            queryFactory: $dataObject,
         );
 
         if ($cache !== null) {
