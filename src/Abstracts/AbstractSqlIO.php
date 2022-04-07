@@ -9,7 +9,6 @@ use CarloNicora\Minimalism\Interfaces\Cache\Interfaces\CacheInterface;
 use CarloNicora\Minimalism\Interfaces\SimpleObjectInterface;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlDataObjectInterface;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlInterface;
-use Exception;
 
 class AbstractSqlIO implements SimpleObjectInterface
 {
@@ -30,7 +29,7 @@ class AbstractSqlIO implements SimpleObjectInterface
      * @param array $recordset
      * @param string|null $recordType
      * @return array
-     * @throws Exception
+     * @throws MinimalismException
      */
     protected function returnSingleValue(
         array $recordset,
