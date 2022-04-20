@@ -117,9 +117,11 @@ interface SqlQueryFactoryInterface
     ): SqlQueryFactoryInterface;
 
     /**
+     * @param string|null $as
      * @return SqlTableInterface
      */
     public function getTable(
+        ?string $as=null,
     ): SqlTableInterface;
 
     /**
