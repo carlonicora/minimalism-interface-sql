@@ -119,7 +119,7 @@ interface SqlQueryFactoryInterface
     /**
      * @return SqlTableInterface
      */
-    public function getTable(z
+    public function getTable(
     ): SqlTableInterface;
 
     /**
