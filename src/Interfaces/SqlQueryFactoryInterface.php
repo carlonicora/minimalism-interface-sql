@@ -8,10 +8,12 @@ interface SqlQueryFactoryInterface
 {
     /**
      * @param string $tableClass
+     * @param string|null $overrideDatabaseIdentifier
      * @return SqlQueryFactoryInterface
      */
     public static function create(
         string $tableClass,
+        ?string $overrideDatabaseIdentifier=null,
     ): SqlQueryFactoryInterface;
 
     /**
