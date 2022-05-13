@@ -14,6 +14,7 @@ interface SqlInterface extends ServiceInterface
      * @param CacheBuilderInterface|null $cacheBuilder
      * @param class-string<InstanceOfType>|null $responseType
      * @param bool $requireObjectsList
+     * @param array $options
      * @return InstanceOfType|array
      */
     public function create(
@@ -21,6 +22,7 @@ interface SqlInterface extends ServiceInterface
         ?CacheBuilderInterface                                $cacheBuilder=null,
         ?string                                               $responseType=null,
         bool                                                  $requireObjectsList=false,
+        array $options=[],
     ): SqlDataObjectInterface|array;
 
     /**
@@ -29,6 +31,7 @@ interface SqlInterface extends ServiceInterface
      * @param CacheBuilderInterface|null $cacheBuilder
      * @param class-string<InstanceOfType>|null $responseType
      * @param bool $requireObjectsList
+     * @param array $options
      * @return InstanceOfType|array
      * @throws MinimalismException
      * @throws Exception
@@ -38,25 +41,30 @@ interface SqlInterface extends ServiceInterface
         ?CacheBuilderInterface   $cacheBuilder=null,
         ?string                  $responseType=null,
         bool                     $requireObjectsList=false,
+        array $options=[],
     ): SqlDataObjectInterface|array;
 
     /**
      * @param SqlDataObjectInterface|SqlQueryFactoryInterface|SqlDataObjectInterface[] $queryFactory
      * @param CacheBuilderInterface|null $cacheBuilder
+     * @param array $options
      * @return void
      */
     public function update(
         SqlDataObjectInterface|SqlQueryFactoryInterface|array $queryFactory,
         ?CacheBuilderInterface $cacheBuilder=null,
+        array $options=[],
     ): void;
 
     /**
      * @param SqlDataObjectInterface|SqlQueryFactoryInterface|SqlDataObjectInterface[]|SqlQueryFactoryInterface[] $queryFactory
      * @param CacheBuilderInterface|null $cacheBuilder
+     * @param array $options
      * @return void
      */
     public function delete(
         SqlDataObjectInterface|SqlQueryFactoryInterface|array $queryFactory,
         ?CacheBuilderInterface                                $cacheBuilder=null,
+        array $options=[],
     ): void;
 }
