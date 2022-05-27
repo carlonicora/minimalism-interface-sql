@@ -62,7 +62,10 @@ class SqlDataObjectFactory
     {
         $response = [];
         $reflection = new ReflectionObject($object);
-        $properties = array_merge($reflection->getProperties(), $reflection->getParentClass()?->getProperties());
+        $properties = $reflection->getProperties();
+        if ($reflection->getParentClass()) {
+            $properties = array_merge($properties, $reflection->getParentClass()->getProperties());
+        }
 
         foreach ($properties as $property){
             $attributes = $property->getAttributes(DbField::class);
