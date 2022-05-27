@@ -26,8 +26,10 @@ class SqlDataObjectFactory
     ): SqlDataObjectInterface
     {
         $response = $objectFactory->create($objectClass);
+        $reflection = (new ReflectionObject($response));
+        $properties = array_merge($reflection->getProperties(), $reflection->getParentClass()?->getProperties());
 
-        foreach ((new ReflectionObject($response))->getProperties() as $property){
+        foreach ($properties as $property){
             $attributes = $property->getAttributes(DbField::class);
             if (!empty($attributes)){
                 $propertyKey = $attributes[0]->getArguments()['field']->name ?? $property->getName();
@@ -59,8 +61,10 @@ class SqlDataObjectFactory
     ): array
     {
         $response = [];
+        $reflection = new ReflectionObject($object);
+        $properties = array_merge($reflection->getProperties(), $reflection->getParentClass()?->getProperties());
 
-        foreach ((new ReflectionObject($object))->getProperties() as $property){
+        foreach ($properties as $property){
             $attributes = $property->getAttributes(DbField::class);
             if (!empty($attributes)){
                 $propertyKey = $attributes[0]->getArguments()['field']->name ?? $property->getName();
