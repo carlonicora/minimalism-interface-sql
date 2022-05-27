@@ -26,8 +26,12 @@ class SqlDataObjectFactory
     ): SqlDataObjectInterface
     {
         $response = $objectFactory->create($objectClass);
-        $reflection = (new ReflectionObject($response));
-        $properties = array_merge($reflection->getProperties(), $reflection->getParentClass()?->getProperties());
+
+        $reflection = new ReflectionObject($response);
+        $properties = $reflection->getProperties();
+        if ($reflection->getParentClass()) {
+            $properties = array_merge($properties, $reflection->getParentClass()->getProperties());
+        }
 
         foreach ($properties as $property){
             $attributes = $property->getAttributes(DbField::class);
