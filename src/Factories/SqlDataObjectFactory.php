@@ -29,8 +29,13 @@ class SqlDataObjectFactory
 
         $reflection = new ReflectionObject($response);
         $properties = $reflection->getProperties();
-        if ($reflection->getParentClass()) {
-            $properties = array_merge($properties, $reflection->getParentClass()->getProperties());
+        $parentClass =  $reflection->getParentClass();
+        while ($parentClass !== null) {
+            foreach ($parentClass->getProperties() as $property) {
+                $properties[]= $property;
+            }
+
+            $parentClass = $parentClass->getParentClass();
         }
 
         foreach ($properties as $property){
