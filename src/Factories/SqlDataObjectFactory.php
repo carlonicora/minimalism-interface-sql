@@ -30,7 +30,7 @@ class SqlDataObjectFactory
         $reflection = new ReflectionObject($response);
         $properties = $reflection->getProperties();
         $parentClass =  $reflection->getParentClass();
-        while ($parentClass !== null) {
+        while ($parentClass !== false) {
             foreach ($parentClass->getProperties() as $property) {
                 $properties[]= $property;
             }
