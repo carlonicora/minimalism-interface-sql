@@ -52,20 +52,29 @@ class AbstractSqlIO implements SimpleObjectInterface
     }
 
     /**
-     * @template InstanceOfType
-     * @param SqlDataObjectInterface<InstanceOfType>|SqlQueryFactoryInterface|array $dataObject
+     * @param SqlDataObjectInterface|SqlQueryFactoryInterface|array $dataObject
      * @param CacheBuilderInterface|null $cache
-     * @return InstanceOfType
-     * @throws Exception
+     * @return SqlDataObjectInterface|SqlDataObjectInterface[]
      */
     public function create(
         SqlDataObjectInterface|SqlQueryFactoryInterface|array $dataObject,
-        ?CacheBuilderInterface                                $cache = null
-    ): SqlDataObjectInterface
+        ?CacheBuilderInterface                                $cache = null,
+    ): SqlDataObjectInterface|array
     {
-        $result = $this->data->create(
-            queryFactory: $dataObject
-        );
+        if (is_array($dataObject)) {
+            $responseType = get_class(current($dataObject));
+            $result = $this->data->create(
+                queryFactory: $dataObject,
+                responseType: $responseType,
+                requireObjectsList: true
+            );
+        } else {
+            $responseType = get_class($dataObject);
+            $result = $this->data->create(
+                queryFactory: $dataObject,
+                responseType: $responseType,
+            );
+        }
 
         if ($cache !== null) {
             $this->cache->invalidate($cache);
