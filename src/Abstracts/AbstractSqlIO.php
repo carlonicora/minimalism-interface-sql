@@ -11,7 +11,6 @@ use CarloNicora\Minimalism\Interfaces\SimpleObjectInterface;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlDataObjectInterface;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlInterface;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlQueryFactoryInterface;
-use Exception;
 
 class AbstractSqlIO implements SimpleObjectInterface
 {
@@ -62,6 +61,7 @@ class AbstractSqlIO implements SimpleObjectInterface
     ): SqlDataObjectInterface|array
     {
         if (is_array($dataObject)) {
+            /** @var array $dataObject */
             $responseType = get_class(current($dataObject));
             $result = $this->data->create(
                 queryFactory: $dataObject,

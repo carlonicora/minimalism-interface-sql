@@ -8,10 +8,12 @@ interface SqlTableInterface
     /**
      * @param string $name
      * @param string $databaseIdentifier
+     * @param bool $insertIgnore
      */
     public function __construct(
         string $name,
         string $databaseIdentifier,
+        bool $insertIgnore=false,
     );
 
     /**

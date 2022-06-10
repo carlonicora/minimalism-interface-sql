@@ -2,6 +2,7 @@
 namespace CarloNicora\Minimalism\Interfaces\Sql\Interfaces;
 
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\SqlComparison;
+use CarloNicora\Minimalism\Interfaces\Sql\Enums\SqlFieldType;
 use UnitEnum;
 
 interface SqlQueryFactoryInterface
@@ -84,28 +85,28 @@ interface SqlQueryFactoryInterface
      * @param UnitEnum|string $field
      * @param mixed $value
      * @param SqlComparison|null $comparison
-     * @param UnitEnum|null $stringParameterType
+     * @param SqlFieldType|null $stringParameterType
      * @return SqlQueryFactoryInterface
      */
     public function addParameter(
         UnitEnum|string $field,
         mixed $value,
         ?SqlComparison $comparison=SqlComparison::Equal,
-        ?UnitEnum $stringParameterType=null,
+        ?SqlFieldType $stringParameterType=null,
     ): SqlQueryFactoryInterface;
 
     /**
      * @param UnitEnum|string $field
      * @param mixed $value
      * @param SqlComparison|null $comparison
-     * @param UnitEnum|null $stringParameterType
+     * @param SqlFieldType|null $stringParameterType
      * @return SqlQueryFactoryInterface
      */
     public function addHavingParameter(
         UnitEnum|string $field,
         mixed $value,
         ?SqlComparison $comparison=SqlComparison::Equal,
-        ?UnitEnum $stringParameterType=null,
+        ?SqlFieldType $stringParameterType=null,
     ): SqlQueryFactoryInterface;
 
     /**

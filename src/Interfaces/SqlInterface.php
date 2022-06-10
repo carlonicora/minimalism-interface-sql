@@ -67,4 +67,12 @@ interface SqlInterface extends ServiceInterface
         ?CacheBuilderInterface                                $cacheBuilder=null,
         array $options=[],
     ): void;
+
+    /**
+     * @param string $baseFactory
+     * @return mixed
+     */
+    public function getFactory(
+        string $baseFactory,
+    ): string;
 }

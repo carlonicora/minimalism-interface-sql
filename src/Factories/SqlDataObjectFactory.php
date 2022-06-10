@@ -1,11 +1,11 @@
 <?php
 namespace CarloNicora\Minimalism\Interfaces\Sql\Factories;
 
-use CarloNicora\Minimalism\Factories\ObjectFactory;
 use CarloNicora\Minimalism\Interfaces\Sql\Attributes\DbField;
 use CarloNicora\Minimalism\Interfaces\Sql\Enums\DbFieldType;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlDataObjectInterface;
 use Exception;
+use ReflectionClass;
 use ReflectionObject;
 use Throwable;
 
@@ -13,19 +13,18 @@ class SqlDataObjectFactory
 {
     /**
      * @template InstanceOfType
-     * @param ObjectFactory $objectFactory
      * @param class-string<InstanceOfType> $objectClass
      * @param array $data
      * @return InstanceOfType
      * @throws Exception
      */
     public static function createObject(
-        ObjectFactory $objectFactory,
         string $objectClass,
         array $data,
     ): SqlDataObjectInterface
     {
-        $response = $objectFactory->create($objectClass);
+        /** @var SqlDataObjectInterface $response */
+        $response = (new ReflectionClass($objectClass))->newInstanceWithoutConstructor();
 
         $reflection = new ReflectionObject($response);
         $properties = [];
