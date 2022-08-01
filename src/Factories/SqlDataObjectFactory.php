@@ -146,12 +146,10 @@ class SqlDataObjectFactory
                 $response = $data[$name];
                 break;
             case DbFieldType::IntDateTime:
-                if ($isNullable){
-                    if ($data[$name] !== null){
-                        $response = strtotime($data[$name]);
-                    }
-                } else {
-                    $response = strtotime($data[$name]) ?? time();
+                if ($data[$name] !== null){
+                    $response = strtotime($data[$name]);
+                } elseif ($isNullable === false) {
+                    $response = time();
                 }
                 break;
             case DbFieldType::Bool:
