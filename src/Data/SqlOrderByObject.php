@@ -3,11 +3,12 @@ namespace CarloNicora\Minimalism\Interfaces\Sql\Data;
 
 use CarloNicora\Minimalism\Interfaces\Sql\Abstracts\AbstractSqlFactory;
 use CarloNicora\Minimalism\Interfaces\Sql\Factories\SqlQueryFactory;
+use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlOrderByInterface;
 use UnitEnum;
 use CarloNicora\Minimalism\Exceptions\MinimalismException;
 use CarloNicora\Minimalism\Interfaces\Sql\Interfaces\SqlFieldInterface;
 
-class SqlOrderByObject extends AbstractSqlFactory
+class SqlOrderByObject extends AbstractSqlFactory implements SqlOrderByInterface
 {
     /**
      * @param UnitEnum $field
