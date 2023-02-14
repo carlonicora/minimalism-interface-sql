@@ -20,6 +20,12 @@ interface SqlQueryFactoryInterface
     /**
      * @return SqlQueryFactoryInterface
      */
+    public function distinct(
+    ): SqlQueryFactoryInterface;
+
+    /**
+     * @return SqlQueryFactoryInterface
+     */
     public function selectAll(
     ): SqlQueryFactoryInterface;
 
