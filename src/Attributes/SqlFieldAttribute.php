@@ -97,4 +97,12 @@ class SqlFieldAttribute implements SqlFieldInterface
     {
         return (($this->fieldOption?->value & SqlFieldOption::AutoIncrement->value) > SqlFieldOption::PrimaryKey->value);
     }
+
+    /**
+     * @return SqlFieldOption|null
+     */
+    public function getOption(
+    ): ?SqlFieldOption {
+        return $this->fieldOption;
+    }
 }
