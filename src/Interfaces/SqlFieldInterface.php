@@ -65,4 +65,7 @@ interface SqlFieldInterface
      */
     public function isAutoIncrement(
     ): bool;
+
+    public function getOption(
+    ): ?SqlFieldOption;
 }
